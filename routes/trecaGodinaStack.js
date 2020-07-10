@@ -2,6 +2,7 @@ import { createStackNavigator } from 'react-navigation-stack';
 import React from 'react';
 import Header from '../shared/header';
 import DrugaGodina from '../screens/trecaGodina';
+import OglasDetail from "../screens/oglasDetail";
 
 const screens = {
     DrugaGodina: {
@@ -12,6 +13,12 @@ const screens = {
             }
         },
     },
+    OglasDetail: {
+        screen: OglasDetail,
+        navigationOptions: {
+            title: 'Oglas',
+        }
+    }
 }
 
 const DrugaGodinaStack = createStackNavigator(screens, {

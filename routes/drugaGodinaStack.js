@@ -16,9 +16,9 @@ const screens = {
     OglasDetail: {
         screen: OglasDetail,
         navigationOptions: {
-          title: 'Druga godina',
+            title: 'Druga godina',
         }
-      },
+    },
 }
 
 const DrugaGodinaStack = createStackNavigator(screens, {

@@ -2,6 +2,7 @@ import { createStackNavigator } from 'react-navigation-stack';
 import React from 'react';
 import Header from '../shared/header';
 import Pocetna from '../screens/pocetna';
+import OglasDetail from "../screens/oglasDetail";
 
 const screens = {
     Pocetna: {
@@ -11,6 +12,12 @@ const screens = {
                 headerTitle: () => <Header title='Početna' navigation={navigation} />
             }
         },
+    },
+    OglasDetail: {
+        screen: OglasDetail,
+        navigationOptions: {
+            title: 'Oglas',
+        }
     },
 }
 

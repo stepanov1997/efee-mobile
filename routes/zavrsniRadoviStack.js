@@ -2,6 +2,7 @@ import { createStackNavigator } from 'react-navigation-stack';
 import React from 'react';
 import Header from '../shared/header';
 import ZavrsniRadovi from '../screens/zavrsniRadovi';
+import ZavrsniRadDetail from "../screens/zavrsniRadDetail";
 
 const screens = {
     ZavrsniRadovi: {
@@ -12,6 +13,12 @@ const screens = {
             }
         },
     },
+    ZavrsniRadDetail: {
+        screen: ZavrsniRadDetail,
+        navigationOptions: {
+            title: 'Završni rad',
+        }
+    }
 }
 
 const ZavrsniRadoviStack = createStackNavigator(screens, {

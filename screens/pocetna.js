@@ -3,10 +3,10 @@ import { View, Text } from 'react-native';
 import { MainPage } from '../components/main-page/main-page';
 
 
-export default function Pocetna() {
+export default function Pocetna(props) {
     return (
         <View>
-            <MainPage />
+            <MainPage navigation={props.navigation}/>
         </View>
     )
 }
