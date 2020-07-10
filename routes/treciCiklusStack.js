@@ -1,24 +1,24 @@
 import { createStackNavigator } from 'react-navigation-stack';
 import React from 'react';
 import Header from '../shared/header';
-import Pocetna from '../screens/pocetna';
+import TreciCiklus from '../screens/treciCiklus';
 
 const screens = {
-    Pocetna: {
-        screen: Pocetna,
+    TreciCiklus: {
+        screen: TreciCiklus,
         navigationOptions: ({ navigation }) => {
             return {
-                headerTitle: () => <Header title='Početna' navigation={navigation} />
+                headerTitle: () => <Header title='Treći ciklus' navigation={navigation} />
             }
         },
     },
 }
 
-const PocetnaStack = createStackNavigator(screens, {
+const TreciCiklusStack = createStackNavigator(screens, {
     defaultNavigationOptions: {
         headerTintColor: '#444',
         headerStyle: { backgroundColor: '#eee', height: 60 },
     }
 });
 
-export default PocetnaStack;
+export default TreciCiklusStack;
