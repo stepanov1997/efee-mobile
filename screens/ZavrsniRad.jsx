@@ -9,7 +9,7 @@ export const ZavrsniRad = (props) => {
         <View style={style.list}>
             {
                 props.data.map(elem =>{
-                    console.log(elem)
+                    //console.log(elem)
                     return (
                         <TouchableHighlight key={elem.id} underlayColor={"#2196f3"}
                                             onPress={() => props.navigation.navigate('ZavrsniRadDetail', {zavrsniRad: elem})}>

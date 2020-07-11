@@ -9,40 +9,70 @@ import TrecaGodinaStack from './trecaGodinaStack';
 import CetvrtaGodinaStack from './cetvrtaGodinaStack';
 import DrugiCiklusStack from './drugiCiklusStack';
 import TreciCiklusStack from './treciCiklusStack';
+import OdbraneRadovaStack from './odbraneZavrsnihRadovaStack';
+import PostdiplomskiStudijStack from './postdiplomskiStack';
 import ZavrsniRadoviStack from './zavrsniRadoviStack';
 
 // drawer navigation options
 const RootDrawerNavigator = createDrawerNavigator({
     Pocetna: {
-        displayName: "Početna strana",
+        navigationOptions: {
+            drawerLabel: "Početna"
+        },
         screen: PocetnaStack,
     },
     Prva: {
-        displayName: "Prva godina",
+        navigationOptions: {
+            drawerLabel: "Prva godina"
+        },
         screen: PrvaGodinaStack,
     },
     Druga: {
-        displayName: "Druga godina",
+        navigationOptions: {
+            drawerLabel: "Druga godina"
+        },
         screen: DrugaGodinaStack,
     },
     Treca: {
-        displayName: "Treća godina",
+        navigationOptions: {
+            drawerLabel: "Treća godina"
+        },
         screen: TrecaGodinaStack,
     },
     Cetvrta: {
-        displayName: "Četvrta godina",
+        navigationOptions: {
+            drawerLabel: "Četvrta godina"
+        },
         screen: CetvrtaGodinaStack,
     },
     DrugiCiklus: {
-        displayName: "Drugi ciklus",
+        navigationOptions: {
+            drawerLabel: "Drugi ciklus"
+        },
         screen: DrugiCiklusStack,
     },
     TreciCiklus: {
-        displayName: "Treći ciklus",
+        navigationOptions: {
+            drawerLabel: "Treći ciklus"
+        },
         screen: TreciCiklusStack,
     },
+    OdbraneRadova: {
+        navigationOptions: {
+            drawerLabel: "Odbrane završnih radova"
+        },
+        screen: OdbraneRadovaStack,
+    },
+    PostdiplomskiStudij: {
+        navigationOptions: {
+            drawerLabel: "Postdiplomski studij"
+        },
+        screen: PostdiplomskiStudijStack,
+    },
     ZavrsniRadovi: {
-        displayName: "Završni radovi",
+        navigationOptions: {
+            drawerLabel: "Završni radovi"
+        },
         screen: ZavrsniRadoviStack,
     },
 });

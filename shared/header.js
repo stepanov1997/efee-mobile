@@ -36,6 +36,10 @@ const styles = StyleSheet.create({
         position: 'absolute',
         left: 16,
     },
+    searchIcon: {
+        position: 'absolute',
+        right: 16,
+    },
     headerTitle: {
         flexDirection: 'row'
     },
