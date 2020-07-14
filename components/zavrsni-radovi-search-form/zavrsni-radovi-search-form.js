@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, TextInput, Button, Text, StyleSheet } from 'react-native';
-import {Picker} from '@react-native-community/picker';
+import {Picker} from 'react-native';
 
 export default ZavrsniRadoviSearchForm = ({searchOnPress}) => {
   const [searchTerm, setSearchTerm] = useState();

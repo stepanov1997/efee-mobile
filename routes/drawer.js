@@ -57,17 +57,17 @@ const RootDrawerNavigator = createDrawerNavigator({
         },
         screen: TreciCiklusStack,
     },
-    OdbraneRadova: {
-        navigationOptions: {
-            drawerLabel: "Odbrane završnih radova"
-        },
-        screen: OdbraneRadovaStack,
-    },
     PostdiplomskiStudij: {
         navigationOptions: {
             drawerLabel: "Postdiplomski studij"
         },
         screen: PostdiplomskiStudijStack,
+    },
+    OdbraneRadova: {
+        navigationOptions: {
+            drawerLabel: "Odbrane završnih radova"
+        },
+        screen: OdbraneRadovaStack,
     },
     ZavrsniRadovi: {
         navigationOptions: {

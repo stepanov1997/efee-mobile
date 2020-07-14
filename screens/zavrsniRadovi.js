@@ -1,8 +1,8 @@
-import React, {useEffect, useState} from 'react';
-import {View, Text, Dimensions,ScrollView, StyleSheet, Modal, TextInput, Button } from 'react-native';
-import {MainPageGodina} from "../components/main-page-godina/main-page-godina";
+import React, { useEffect, useState } from 'react';
+import { View, Text, Dimensions, ScrollView, StyleSheet, Modal, TextInput, Button } from 'react-native';
+import { MainPageGodina } from "../components/main-page-godina/main-page-godina";
 import ZavrsniRadDetail from "./zavrsniRadDetail";
-import {ZavrsniRad} from "./ZavrsniRad";
+import { ZavrsniRad } from "./ZavrsniRad";
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { MaterialIcons } from '@expo/vector-icons';
 import ZavrsniRadoviSearchForm from '../components/zavrsni-radovi-search-form/zavrsni-radovi-search-form';
@@ -21,16 +21,17 @@ export default function ZavrsniRadovi(props) {
         async function fetchData() {
             let filterQuery = {
                 where: [],
-                orderBy: [{operator: "desc", field: "trenutniStatus.vrijemeKreiranja"}],
+                orderBy: [{ operator: "desc", field: "trenutniStatus.vrijemeKreiranja" }],
                 fetchSize: pageLimit,
                 fetchOffset: ((currentPage - 1) * pageLimit)
             }
-            
-            if (searchTerm!=null && searchTerm!==""){
-                filterQuery['where'] = [{ 
-                    "operator": searchField === "trenutniStatus.statusZavrsnogRada.naziv" ? "like" : "ilike", 
-                    "field": searchField, 
-                    "value": searchTerm }];
+
+            if (searchTerm != null && searchTerm !== "") {
+                filterQuery['where'] = [{
+                    "operator": searchField === "trenutniStatus.statusZavrsnogRada.naziv" ? "like" : "ilike",
+                    "field": searchField,
+                    "value": searchTerm
+                }];
             }
 
             const encoded = encodeURI(encodeURI(JSON.stringify(filterQuery)));
@@ -51,29 +52,38 @@ export default function ZavrsniRadovi(props) {
     }
     return (
         <ScrollView style={{ height: "auto", maxHeight: screenHeight }}>
+            {
+                zavrsniRadovi.length == 0 ? (
+                    <View style={styles.noDataContainer}>
+                        <Text>Nema aktivnih radova.</Text>
+                    </View>
+                ) : (
+                        <>
+                            <Modal visible={modalVisible} animationType='slide'>
+                                <MaterialIcons name='close' size={28} onPress={() => setModalVisible(false)} style={styles.iconCloseModal} />
+                                <ZavrsniRadoviSearchForm searchOnPress={searchOnPressHandler} />
+                            </Modal>
 
-            <Modal visible={modalVisible} animationType='slide'>
-                <MaterialIcons name='close' size={28} onPress={()=> setModalVisible(false)} style={styles.iconCloseModal}/>
-                <ZavrsniRadoviSearchForm searchOnPress={searchOnPressHandler}/>
-            </Modal>
+                            <MaterialIcons name='search' size={28} onPress={() => setModalVisible(!modalVisible)} style={styles.icon} />
 
-            <MaterialIcons name='search' size={28} onPress={()=> setModalVisible(!modalVisible)} style={styles.icon}/>
-
-            <ZavrsniRad data={zavrsniRadovi} navigation={props.navigation}/>
-            <View style={styles.paginationContainer}>
-                {currentPage==1?(
-                    null
-                ):(
-                    <MaterialIcons name='navigate-before' size={28} onPress={()=> setCurrentPage(currentPage - 1)} style={styles.icon}/>
-                )}
-                <Text style={styles.pageCounter}>strana {currentPage} od {Math.ceil(total/pageLimit)}</Text>
-                {currentPage==Math.ceil(total/pageLimit)?(
-                    null
-                ):(
-                    <MaterialIcons name='navigate-next' size={28} onPress={()=> setCurrentPage(currentPage + 1)} style={styles.icon}/>
-                )}
-            </View>
-            <Text style={styles.totalCounter}>ukupno {total} završnih radova</Text>
+                            <ZavrsniRad data={zavrsniRadovi} navigation={props.navigation} />
+                            <View style={styles.paginationContainer}>
+                                {currentPage == 1 ? (
+                                    null
+                                ) : (
+                                        <MaterialIcons name='navigate-before' size={28} onPress={() => setCurrentPage(currentPage - 1)} style={styles.icon} />
+                                    )}
+                                <Text style={styles.pageCounter}>strana {currentPage} od {Math.ceil(total / pageLimit)}</Text>
+                                {currentPage == Math.ceil(total / pageLimit) ? (
+                                    null
+                                ) : (
+                                        <MaterialIcons name='navigate-next' size={28} onPress={() => setCurrentPage(currentPage + 1)} style={styles.icon} />
+                                    )}
+                            </View>
+                            <Text style={styles.totalCounter}>ukupno {total} završnih radova</Text>
+                        </>
+                    )
+            }
         </ScrollView>
     )
 }
@@ -97,5 +107,10 @@ const styles = StyleSheet.create({
     },
     iconCloseModal: {
         margin: 20,
+    },
+    noDataContainer: {
+        paddingTop: 60,
+        alignItems: 'center',
+        justifyContent: 'center',
     }
 })

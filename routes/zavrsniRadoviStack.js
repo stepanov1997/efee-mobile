@@ -17,6 +17,7 @@ const screens = {
         screen: ZavrsniRadDetail,
         navigationOptions: {
             title: 'Završni rad',
+            headerBackTitle: 'Završni radovi',
         }
     }
 }

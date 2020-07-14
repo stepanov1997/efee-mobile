@@ -9,7 +9,7 @@ const screens = {
         screen: PrvaGodina,
         navigationOptions: ({ navigation }) => {
             return {
-                headerTitle: () => <Header title='Prva Godina' navigation={navigation} />
+                headerTitle: () => <Header title='Prva godina' navigation={navigation}/>,
             }
         },
     },
@@ -17,6 +17,7 @@ const screens = {
         screen: OglasDetail,
         navigationOptions: {
             title: 'Oglas',
+            headerBackTitle: 'Prva godina',
         }
     },
 }

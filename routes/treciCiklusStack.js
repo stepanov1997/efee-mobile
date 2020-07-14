@@ -17,8 +17,9 @@ const screens = {
         screen: OglasDetail,
         navigationOptions: {
             title: 'Oglas',
+            headerBackTitle: 'Treći ciklus',
         }
-    }
+    },
 }
 
 const TreciCiklusStack = createStackNavigator(screens, {

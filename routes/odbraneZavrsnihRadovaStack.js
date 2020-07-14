@@ -18,6 +18,7 @@ const screens = {
         screen: OglasDetail,
         navigationOptions: {
             title: 'Oglas',
+            headerBackTitle: 'Odbrane završnih radova',
         }
     },
 }

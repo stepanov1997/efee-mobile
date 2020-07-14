@@ -1,28 +1,36 @@
 import React from 'react';
-import {StyleSheet, View, Text, TouchableOpacity, Linking, ScrollView} from 'react-native';
-import {parseDate} from "../util";
+import { StyleSheet, View, Text, TouchableOpacity, Linking, ScrollView } from 'react-native';
+import { parseDate } from "../util";
 
 export default function OglasDetail(props) {
     const oglas = props.navigation.getParam('oglas');
-    console.log("Potpis: ." + oglas.potpis + ".")
+    //console.log("Potpis: ." + oglas.potpis + ".")
     return (
         <ScrollView>
-            <View style={styles.centerOnScreen}>
-                <Text style={styles.naslov}>{oglas.naslov}</Text>
+            <View style={styles.oglasContainer}>
                 <Text style={styles.vrijeme}>{parseDate(oglas.vrijemeKreiranja)}</Text>
+                <Text style={styles.naslov}>
+                    {oglas.naslov}
+                    {
+                        oglas.uvod == null || oglas.uvod.trim() === "" ? (
+                            null
+                        ) : (
+                                <Text> - {oglas.uvod}</Text>
+                            )
+                    }
+                </Text>
                 <View style={{
                     height: 1,
                     backgroundColor: 'rgba(255, 255, 255 ,0.3)',
                     alignSelf: 'stretch'
-                }}/>
-                <Text style={styles.uvod}>{oglas.uvod}</Text>
-                <Text style={styles.sadrzaj}>{oglas.sadrzaj}</Text>
+                }} />
+                <Text style={styles.sadrzaj}>{oglas.sadrzaj.trim()}</Text>
                 {
-                    (oglas.oglasPrilozi.length === 0 ? <Text/> : (
+                    (oglas.oglasPrilozi.length === 0 ? <Text /> : (
                         <TouchableOpacity>
                             <View>
-                                <Text style={{color: 'blue'}}
-                                      onPress={() => Linking.openURL(`https://efee.etf.unibl.org:8443/api/public/oglasi/${oglas.oglasPrilozi[0].id}/download`)}>
+                                <Text style={styles.prilog}
+                                    onPress={() => Linking.openURL(`https://efee.etf.unibl.org:8443/api/public/oglasi/${oglas.oglasPrilozi[0].id}/download`)}>
                                     Prilog: {oglas.oglasPrilozi[0].originalniNaziv}
                                 </Text>
                             </View>
@@ -37,31 +45,29 @@ export default function OglasDetail(props) {
 }
 
 const styles = StyleSheet.create({
-    centerOnScreen: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center'
+    oglasContainer: {
+        paddingVertical: 30,
+        paddingHorizontal: 15,
     },
     naslov: {
-        fontSize: 26,
-        marginTop: 20,
-        marginLeft: 20,
-        marginRight: 20
+        fontSize: 20,
+        fontWeight: 'bold',
     },
     vrijeme: {
-        fontSize: 18,
-        margin: 10
-    },
-    uvod: {
-        fontSize: 20,
-        margin: 20
+        fontSize: 16,
+        marginVertical: 5,
+        color: '#777',
     },
     sadrzaj: {
-        fontSize: 20,
-        padding: 30
+        fontSize: 16,
+        paddingTop: 30,
     },
     potpis: {
-        fontSize: 20,
-        padding: 30
+        fontSize: 16,
+    },
+    prilog: {
+        color: 'blue',
+        fontWeight: 'bold',
+        marginVertical: 10,
     }
 });

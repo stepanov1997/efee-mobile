@@ -16,7 +16,8 @@ const screens = {
     OglasDetail: {
         screen: OglasDetail,
         navigationOptions: {
-            title: 'Druga godina',
+            title: 'Oglas',
+            headerBackTitle: 'Druga godina',
         }
     },
 }

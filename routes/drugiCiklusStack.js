@@ -12,6 +12,13 @@ const screens = {
             }
         },
     },
+    OglasDetail: {
+        screen: OglasDetail,
+        navigationOptions: {
+            title: 'Oglas',
+            headerBackTitle: 'Drugi ciklus',
+        }
+    },
 }
 
 const DrugiCiklusStack = createStackNavigator(screens, {
