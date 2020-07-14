@@ -9,7 +9,7 @@ export const MainPageGodina = (props) => {
                 null
             ) : (
                     <View style={style.godinaContainer}>
-                        <Text style={style.godinaHeading}>{`${props.godina}`}</Text>
+                        {/*<Text style={style.godinaHeading}>{`${props.godina}`}</Text>*/}
                         <View style={style.list}>
                             {
                                 props.data.map(elem =>
@@ -48,7 +48,7 @@ const style = StyleSheet.create({
         marginTop: StatusBar.currentHeight || 0
     },
     godinaContainer: {
-        marginVertical: 20,
+        marginVertical: 10,
     },
     godinaHeading: {
         fontSize: 18,
@@ -60,11 +60,12 @@ const style = StyleSheet.create({
     list: {
     },
     oglasContainer: {
-        marginVertical: 6,
+        paddingVertical: 6,
         paddingHorizontal: 15,
     },
     oglasHeading: {
         fontSize: 16,
+        fontWeight: '500',
     },
     uvod: {
     },

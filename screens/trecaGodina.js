@@ -23,7 +23,9 @@ export default function TrecaGodina(props) {
                         <Text>Nema aktivnih oglasa.</Text>
                     </View>
                 ) : (
-                    <MainPageGodina key={3} godina={"Treća godina"} data={thirdYearData} navigation={props.navigation}/>
+                    <View style={{ paddingVertical: 20 }}>
+                        <MainPageGodina key={3} godina={"Treća godina"} data={thirdYearData} navigation={props.navigation}/>
+                    </View>
                 )
             }
         </ScrollView>

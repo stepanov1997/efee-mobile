@@ -50,8 +50,37 @@ export default function ZavrsniRadovi(props) {
         setSearchField(field);
         setCurrentPage(1);
     }
+
+    const resetSearchHandler = () => {
+        setSearchTerm(null);
+    }
+
     return (
         <ScrollView style={{ height: "auto", maxHeight: screenHeight }}>
+            <Modal visible={modalVisible} animationType='slide'>
+                <ZavrsniRadoviSearchForm searchOnPress={searchOnPressHandler} setModalVisible={setModalVisible} />
+            </Modal>
+
+            <View style={styles.searchContainer} >
+                <TouchableOpacity style={styles.searchButton} onPress={() => setModalVisible(!modalVisible)} >
+                    <Text style={{ flex: 1, textAlign: 'center' }}>
+                        {searchTerm == null || searchTerm == "" ? ("Pretraži radove") : searchTerm}
+                    </Text>
+                    {searchTerm == null || searchTerm == "" ? (
+                        null
+                    ) : (
+                            /*<Text style={{fontWeight: 'bold', marginHorizontal: 10}}>Poništi</Text>*/
+                            <TouchableOpacity onPress={resetSearchHandler} style={{ width: 50 }}>
+                                <MaterialIcons
+                                    name='close'
+                                    size={24}
+                                    onPress={() => setModalVisible(false)}
+                                    style={styles.resetSearchButton}
+                                />
+                            </TouchableOpacity>
+                        )}
+                </TouchableOpacity>
+            </View>
             {
                 zavrsniRadovi.length == 0 ? (
                     <View style={styles.noDataContainer}>
@@ -59,25 +88,20 @@ export default function ZavrsniRadovi(props) {
                     </View>
                 ) : (
                         <>
-                            <Modal visible={modalVisible} animationType='slide'>
-                                <MaterialIcons name='close' size={28} onPress={() => setModalVisible(false)} style={styles.iconCloseModal} />
-                                <ZavrsniRadoviSearchForm searchOnPress={searchOnPressHandler} />
-                            </Modal>
-
-                            <MaterialIcons name='search' size={28} onPress={() => setModalVisible(!modalVisible)} style={styles.icon} />
+                            {/*<MaterialIcons name='search' size={28} onPress={() => setModalVisible(!modalVisible)} style={styles.icon} />*/}
 
                             <ZavrsniRad data={zavrsniRadovi} navigation={props.navigation} />
                             <View style={styles.paginationContainer}>
                                 {currentPage == 1 ? (
-                                    null
+                                    <MaterialIcons name='navigate-before' size={40} style={styles.disabledIcon} />
                                 ) : (
-                                        <MaterialIcons name='navigate-before' size={28} onPress={() => setCurrentPage(currentPage - 1)} style={styles.icon} />
+                                        <MaterialIcons name='navigate-before' size={40} onPress={() => setCurrentPage(currentPage - 1)} style={styles.icon} />
                                     )}
                                 <Text style={styles.pageCounter}>strana {currentPage} od {Math.ceil(total / pageLimit)}</Text>
                                 {currentPage == Math.ceil(total / pageLimit) ? (
-                                    null
+                                    <MaterialIcons name='navigate-next' size={40} style={styles.disabledIcon} />
                                 ) : (
-                                        <MaterialIcons name='navigate-next' size={28} onPress={() => setCurrentPage(currentPage + 1)} style={styles.icon} />
+                                        <MaterialIcons name='navigate-next' size={40} onPress={() => setCurrentPage(currentPage + 1)} style={styles.icon} />
                                     )}
                             </View>
                             <Text style={styles.totalCounter}>ukupno {total} završnih radova</Text>
@@ -90,11 +114,15 @@ export default function ZavrsniRadovi(props) {
 
 const styles = StyleSheet.create({
     totalCounter: {
-        paddingVertical: 10,
+        paddingVertical: 20,
         textAlign: 'center',
     },
     icon: {
         marginHorizontal: 10,
+    },
+    disabledIcon: {
+        marginHorizontal: 10,
+        color: '#ddd',
     },
     paginationContainer: {
         flexDirection: 'row',
@@ -112,5 +140,22 @@ const styles = StyleSheet.create({
         paddingTop: 60,
         alignItems: 'center',
         justifyContent: 'center',
+    },
+    searchContainer: {
+        flex: 1,
+        marginVertical: 20,
+        marginHorizontal: 15,
+    },
+    searchButton: {
+        backgroundColor: '#ddd',
+        borderRadius: 5,
+        height: 30,
+        alignItems: 'center',
+        justifyContent: 'center',
+        flexDirection: 'row'
+    },
+    resetSearchButton: {
+        marginHorizontal: 5,
+        marginLeft: 'auto',
     }
 })

@@ -32,13 +32,21 @@ export const MainPage = (props) => {
     const screenHeight = Dimensions.get('window').height
     return (
         <ScrollView style={{ height: "auto", maxHeight: screenHeight}} style={styles.scrollContainer}>
+            {firstYearData.length==0?null:(<Text style={styles.godinaHeading}>Prva godina</Text>)}
             <MainPageGodina key={1} godina={"Prva godina"} data={firstYearData} navigation={props.navigation}/>
+            {secondYearData.length==0?null:(<Text style={styles.godinaHeading}>Druga godina</Text>)}
             <MainPageGodina key={2} godina={"Druga godina"} data={secondYearData} navigation={props.navigation}/>
+            {thirdYearData.length==0?null:(<Text style={styles.godinaHeading}>Treća godina</Text>)}
             <MainPageGodina key={3} godina={"Treća godina"} data={thirdYearData} navigation={props.navigation}/>
+            {fourthYearData.length==0?null:(<Text style={styles.godinaHeading}>Četvrta godina</Text>)}
             <MainPageGodina key={4} godina={"Četvrta godina"} data={fourthYearData} navigation={props.navigation}/>
+            {masterData.length==0?null:(<Text style={styles.godinaHeading}>Drugi ciklus</Text>)}
             <MainPageGodina key={5} godina={"Drugi ciklus"} data={masterData} navigation={props.navigation}/>
+            {phdData.length==0?null:(<Text style={styles.godinaHeading}>Treći ciklus</Text>)}
             <MainPageGodina key={6} godina={"Treći ciklus"} data={phdData} navigation={props.navigation}/>
+            {postGraduateData.length==0?null:(<Text style={styles.godinaHeading}>Postdiplomski studij</Text>)}
             <MainPageGodina key={7} godina={"Postdiplomski studij"} data={postGraduateData} navigation={props.navigation}/>
+            {graduationTheses.length==0?null:(<Text style={styles.godinaHeading}>Odbrane završnih radova</Text>)}
             <MainPageGodina key={8} godina={"Odbrane završnih radova"} data={graduationTheses} navigation={props.navigation}/>
         </ScrollView>
     )
@@ -46,5 +54,12 @@ export const MainPage = (props) => {
 
 const styles = StyleSheet.create({
     scrollContainer: {
-    }
+    },
+    godinaHeading: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: 'black',
+        paddingHorizontal: 15,
+        marginTop: 25,
+    },
 })

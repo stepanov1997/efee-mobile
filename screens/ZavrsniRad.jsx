@@ -1,57 +1,79 @@
-import {StyleSheet, Text, TouchableHighlight, View} from "react-native";
+import { StyleSheet, Text, TouchableHighlight, View } from "react-native";
 import React from "react";
-import {parseDate, promjeniNazivRada} from "../util";
+import { parseDate, promjeniNazivRada } from "../util";
 
 export const ZavrsniRad = (props) => {
 
-    return (<View>
-        <Text style={style.naslov}>{`Završni radovi`}</Text>
-        <View style={style.list}>
-            {
-                props.data.map(elem =>{
-                    //console.log(elem)
-                    return (
-                        <TouchableHighlight key={elem.id} underlayColor={"#2196f3"}
-                                            onPress={() => props.navigation.navigate('ZavrsniRadDetail', {zavrsniRad: elem})}>
-                            <View style={style.oglas}>
-                                <Text style={style.text}>{elem.tema}</Text>
-                                <Text style={style.text}>{parseDate(elem.trenutniStatus.vrijemeKreiranja)}</Text>
-                                <Text style={style.text}>{promjeniNazivRada(elem.trenutniStatus.statusZavrsnogRada.naziv)}</Text>
-                            </View>
-                        </TouchableHighlight>
-                    )}
-                )
-            }
-        </View>
-    </View>);
+    return (
+        <View style={style.oglasContainer}>
+            {/*<Text style={style.naslov}>{`Završni radovi`}</Text>*/}
+            <View style={style.list}>
+                {
+                    props.data.map(elem => {
+                        //console.log(elem);
+                        return (
+                            <TouchableHighlight key={elem.id} underlayColor={"#aaa"} style={style.radContainer}
+                                onPress={() => props.navigation.navigate('ZavrsniRadDetail', { zavrsniRad: elem })}>
+                                <View style={style.oglas}>
+                                    <Text style={style.naslovRada}>{elem.tema}</Text>
+                                    <Text style={style.status}>
+                                        {"Status rada: " + promjeniNazivRada(elem.trenutniStatus.statusZavrsnogRada.naziv)}
+                                    </Text>
+                                    {/*<Text style={style.vrijeme}>
+                                        {"Mentor: " + elem.mentor.ime
+                                        + "\nPredsjednik komisije: " + elem.predsjednikKomisije.ime
+                                        + "\nČlan komisije: " + elem.clanKomisije.ime
+                                        + (elem.studentIme?"\nStudent: " + elem.studentIme : null)}
+                                    </Text>
+                        */}
+                                </View>
+                            </TouchableHighlight>
+                        )
+                    }
+                    )
+                }
+            </View>
+        </View>);
 }
 
 const style = StyleSheet.create({
-    centerOnScreen: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center'
+    oglasContainer: {
+        paddingVertical: 0,
+    },
+    radContainer: {
+        paddingHorizontal: 15,
+        paddingVertical: 10,
     },
     naslov: {
-        fontSize: 26,
-        marginTop: 20,
-        marginLeft: 20,
-        marginRight: 20
+        fontSize: 20,
+        fontWeight: 'bold',
+        paddingHorizontal: 15,
+        paddingBottom: 20,
     },
     vrijeme: {
-        fontSize: 18,
-        margin: 10
+        fontSize: 16,
+        marginVertical: 5,
+        color: '#777',
     },
-    uvod: {
-        fontSize: 20,
-        margin: 20
+    status: {
+        fontSize: 16,
+        marginVertical: 5,
+        color: 'black',
+    },
+    naslovRada: {
+        fontSize: 16,
+        fontWeight: 'bold',
     },
     sadrzaj: {
-        fontSize: 20,
-        padding: 30
+        fontSize: 16,
+        paddingTop: 30,
     },
     potpis: {
-        fontSize: 20,
-        padding: 30
+        fontSize: 16,
+    },
+    prilog: {
+        color: 'blue',
+        fontWeight: 'bold',
+        marginVertical: 15,
     }
 });

@@ -24,7 +24,9 @@ export default function DrugaGodina(props) {
                         <Text>Nema aktivnih oglasa.</Text>
                     </View>
                 ) : (
-                    <MainPageGodina key={2} godina={"Druga godina"} data={secondYearData} navigation={props.navigation}/>
+                    <View style={{ paddingVertical: 20 }}>
+                        <MainPageGodina key={2} godina={"Druga godina"} data={secondYearData} navigation={props.navigation}/>
+                    </View>
                 )
             }
         </ScrollView>

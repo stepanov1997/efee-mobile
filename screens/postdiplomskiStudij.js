@@ -24,7 +24,9 @@ export default function PostdiplomskiStudij(props) {
                         <Text>Nema aktivnih oglasa.</Text>
                     </View>
                 ) : (
-                    <MainPageGodina key={20} godina={"Drugi ciklus"} data={masterData} navigation={props.navigation}/>
+                    <View style={{ paddingVertical: 20 }}>
+                        <MainPageGodina key={20} godina={"Drugi ciklus"} data={masterData} navigation={props.navigation}/>
+                    </View>
                 )
             }
         </ScrollView>

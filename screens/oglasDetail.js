@@ -46,7 +46,7 @@ export default function OglasDetail(props) {
 
 const styles = StyleSheet.create({
     oglasContainer: {
-        paddingVertical: 30,
+        paddingVertical: 20,
         paddingHorizontal: 15,
     },
     naslov: {
@@ -68,6 +68,6 @@ const styles = StyleSheet.create({
     prilog: {
         color: 'blue',
         fontWeight: 'bold',
-        marginVertical: 10,
+        marginVertical: 15,
     }
 });

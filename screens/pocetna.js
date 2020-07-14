@@ -6,7 +6,7 @@ import { MainPage } from '../components/main-page/main-page';
 export default function Pocetna(props) {
     return (
         <View>
-            <MainPage navigation={props.navigation}/>
+            <MainPage navigation={props.navigation} />
         </View>
     )
 }

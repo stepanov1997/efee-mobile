@@ -1,17 +1,26 @@
 import React, { useState } from 'react';
 import { View, TextInput, Button, Text, StyleSheet, Picker } from 'react-native';
+import { MaterialIcons } from '@expo/vector-icons';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
-export const ZavrsniRadoviSearchForm = ({ searchOnPress }) => {
+
+export const ZavrsniRadoviSearchForm = ({ searchOnPress, setModalVisible }) => {
   const [searchTerm, setSearchTerm] = useState();
   const [searchField, setSearchField] = useState("tema");
 
   return (
-    <View>
-      <TextInput
-        style={styles.textInput}
-        onChangeText={text => setSearchTerm(text)}
-      />
+    <View style={styles.dialogContainer}>
+      <View style={styles.searchHeader}>
+        <MaterialIcons name='chevron-left' size={40} onPress={() => setModalVisible(false)} style={styles.iconCloseModal} />
+        <TextInput
+          style={styles.textInput}
+          onChangeText={text => setSearchTerm(text)}
+          placeholder='Pojam za pretragu'
+        />
+      </View>
       <Picker
+        prompt='Kategorija za pretragu'
+        style={styles.picker}
         selectedValue={searchField}
         onValueChange={(itemValue, itemIndex) =>
           setSearchField(itemValue)
@@ -24,14 +33,39 @@ export const ZavrsniRadoviSearchForm = ({ searchOnPress }) => {
         <Picker.Item label="Član komisije" value="clanKomisije.ime" />
         <Picker.Item label="Student" value="studentIme" />
       </Picker>
-      <Button title='Pretraga' onPress={() => searchOnPress(searchTerm, searchField)} />
+      <TouchableOpacity style={styles.searchButton} onPress={() => searchOnPress(searchTerm, searchField)} >
+        <Text style={{color: 'white', fontWeight: 'bold', fontSize: 16, }}>Pretraži</Text>
+      </TouchableOpacity>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  dialogContainer: {
+    paddingVertical: 40,
+  },
+  searchHeader: {
+    flexDirection: 'row',
+  },
   textInput: {
-    color: 'black',
-    borderWidth: 1,
+    backgroundColor: '#ddd',
+    borderWidth: 0,
+    borderRadius: 4,
+    padding: 10,
+    height: 40,
+    flex: 1,
+    marginRight: 15,
+  },
+  picker: {
+    marginVertical: 10,
+  },
+  searchButton: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#666',
+    color: 'white',
+    height: 50,
+    borderRadius: 10,
+    marginHorizontal: 15,
   }
 })

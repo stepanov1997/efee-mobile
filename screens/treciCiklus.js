@@ -1,7 +1,7 @@
-import React, {useEffect, useState} from 'react';
-import {View, Text, Dimensions, StyleSheet} from 'react-native';
-import {ScrollView} from "react-native-gesture-handler";
-import {MainPageGodina} from "../components/main-page-godina/main-page-godina";
+import React, { useEffect, useState } from 'react';
+import { View, Text, Dimensions, StyleSheet } from 'react-native';
+import { ScrollView } from "react-native-gesture-handler";
+import { MainPageGodina } from "../components/main-page-godina/main-page-godina";
 
 export default function TreciCiklus(props) {
     const [phdData, setPhdData] = useState([]);
@@ -18,13 +18,15 @@ export default function TreciCiklus(props) {
     return (
         <ScrollView style={{ height: "auto", maxHeight: screenHeight }}>
             {
-                phdData.length == 0? (
+                phdData.length == 0 ? (
                     <View style={styles.noDataContainer}>
                         <Text>Nema aktivnih oglasa.</Text>
                     </View>
                 ) : (
-                    <MainPageGodina key={21} godina={"Treći ciklus"} data={phdData} navigation={props.navigation}/>
-                )
+                        <View style={{ paddingVertical: 20 }}>
+                            <MainPageGodina key={21} godina={"Treći ciklus"} data={phdData} navigation={props.navigation} />
+                        </View>
+                    )
             }
         </ScrollView>
     )

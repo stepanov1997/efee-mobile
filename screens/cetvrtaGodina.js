@@ -23,7 +23,9 @@ export default function CetvrtaGodina(props) {
                         <Text>Nema aktivnih oglasa.</Text>
                     </View>
                 ) : (
-                    <MainPageGodina key={4} godina={"Četvrta godina"} data={fourthYearData} navigation={props.navigation}/>
+                    <View style={{ paddingVertical: 20 }}>
+                        <MainPageGodina key={4} godina={"Četvrta godina"} data={fourthYearData} navigation={props.navigation}/>
+                    </View>
                 )
             }
         </ScrollView>

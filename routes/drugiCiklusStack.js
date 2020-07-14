@@ -2,6 +2,7 @@ import { createStackNavigator } from 'react-navigation-stack';
 import React from 'react';
 import Header from '../shared/header';
 import DrugiCiklus from '../screens/drugiCiklus';
+import OglasDetail from "../screens/oglasDetail";
 
 const screens = {
     DrugiCiklus: {
