@@ -5,7 +5,7 @@ import ZavrsniRadDetail from "./zavrsniRadDetail";
 import { ZavrsniRad } from "./ZavrsniRad";
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { MaterialIcons } from '@expo/vector-icons';
-import ZavrsniRadoviSearchForm from '../components/zavrsni-radovi-search-form/zavrsni-radovi-search-form';
+import { ZavrsniRadoviSearchForm } from '../components/zavrsni-radovi-search-form/zavrsni-radovi-search-form';
 
 export default function ZavrsniRadovi(props) {
     const [zavrsniRadovi, setZavrsniRadovi] = useState([]);
