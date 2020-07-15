@@ -1,6 +1,6 @@
-import {createDrawerNavigator} from 'react-navigation-drawer';
-import {createAppContainer} from 'react-navigation';
-
+import { createDrawerNavigator } from 'react-navigation-drawer';
+import { createAppContainer } from 'react-navigation';
+import { Text, View } from 'react-native'
 // stacks
 import PocetnaStack from './pocetnaStack';
 import PrvaGodinaStack from './prvaGodinaStack';
@@ -12,6 +12,11 @@ import TreciCiklusStack from './treciCiklusStack';
 import OdbraneRadovaStack from './odbraneZavrsnihRadovaStack';
 import PostdiplomskiStudijStack from './postdiplomskiStack';
 import ZavrsniRadoviStack from './zavrsniRadoviStack';
+import ZavrsniRadoviSviStack from './zavrsniRadoviSviStack';
+import ZavrsniRadoviSlobodniStack from './zavrsniRadoviSlobodniStack';
+import ZavrsniRadoviZauzetiStack from './zavrsniRadoviZauzetiStack';
+import ZavrsniRadoviOdbranjeniStack from './zavrsniRadoviOdbranjeniStack';
+import OuterDrawerItem from './outterDrawerItem';
 
 // drawer navigation options
 const RootDrawerNavigator = createDrawerNavigator({
@@ -21,60 +26,91 @@ const RootDrawerNavigator = createDrawerNavigator({
         },
         screen: PocetnaStack,
     },
+    Oglasi: {
+        navigationOptions: {
+            drawerLabel: "Oglasi"
+        },
+        screen: PrvaGodinaStack,
+    },
     Prva: {
         navigationOptions: {
-            drawerLabel: "Prva godina"
+            drawerLabel: "\tPrva godina"
         },
         screen: PrvaGodinaStack,
     },
     Druga: {
         navigationOptions: {
-            drawerLabel: "Druga godina"
+            drawerLabel: "\tDruga godina"
         },
         screen: DrugaGodinaStack,
     },
     Treca: {
         navigationOptions: {
-            drawerLabel: "Treća godina"
+            drawerLabel: "\tTreća godina"
         },
         screen: TrecaGodinaStack,
     },
     Cetvrta: {
         navigationOptions: {
-            drawerLabel: "Četvrta godina"
+            drawerLabel: "\tČetvrta godina"
         },
         screen: CetvrtaGodinaStack,
     },
     DrugiCiklus: {
         navigationOptions: {
-            drawerLabel: "Drugi ciklus"
+            drawerLabel: "\tDrugi ciklus"
         },
         screen: DrugiCiklusStack,
     },
     TreciCiklus: {
         navigationOptions: {
-            drawerLabel: "Treći ciklus"
+            drawerLabel: "\tTreći ciklus"
         },
         screen: TreciCiklusStack,
     },
     PostdiplomskiStudij: {
         navigationOptions: {
-            drawerLabel: "Postdiplomski studij"
+            drawerLabel: "\tPostdiplomski studij"
         },
         screen: PostdiplomskiStudijStack,
     },
     OdbraneRadova: {
         navigationOptions: {
-            drawerLabel: "Odbrane završnih radova"
+            drawerLabel: "\tOdbrane završnih radova"
         },
         screen: OdbraneRadovaStack,
     },
     ZavrsniRadovi: {
         navigationOptions: {
-            drawerLabel: "Završni radovi"
+            drawerLabel: "Završni radovi",
+            drawerLockMode: 'locked',
         },
-        screen: ZavrsniRadoviStack,
+        screen: ZavrsniRadoviStack
     },
+    ZavrsniRadoviSvi: {
+        navigationOptions: {
+            drawerLabel: "\tSvi"
+        },
+        screen: ZavrsniRadoviSviStack,
+    },
+    ZavrsniRadoviSlobodni: {
+        navigationOptions: {
+            drawerLabel: "\tSlobodni"
+        },
+        screen: ZavrsniRadoviSlobodniStack,
+    },
+    ZavrsniRadoviZauzeti: {
+        navigationOptions: {
+            drawerLabel: "\tZauzeti"
+        },
+        screen: ZavrsniRadoviZauzetiStack,
+    },
+    ZavrsniRadoviOdbranjeni: {
+        navigationOptions: {
+            drawerLabel: "\tOdbranjeni"
+        },
+        screen: ZavrsniRadoviOdbranjeniStack,
+    }
 });
 
 export default createAppContainer(RootDrawerNavigator);

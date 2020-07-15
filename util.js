@@ -12,3 +12,13 @@ export function promjeniNazivRada(naziv) {
         return 'Slobodan';
     } else return naziv;
 }
+
+export const arr_diff = (a1, a2) => a2.filter(elem => !arr_contains(a1, elem));
+
+function arr_contains(array, elem) {
+    for (let i = 0; i < array.length; i++) {
+        if (JSON.stringify(array[i]) === JSON.stringify(elem))
+            return true;
+    }
+    return false;
+}

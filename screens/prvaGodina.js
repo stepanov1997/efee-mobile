@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, Dimensions, StyleSheet } from 'react-native';
+import { View, Text, Dimensions } from 'react-native';
 import { ScrollView } from "react-native-gesture-handler";
 import { MainPageGodina } from "../components/main-page-godina/main-page-godina";
 
@@ -16,26 +16,8 @@ export default function PrvaGodina(props) {
     }, [])
     const screenHeight = Dimensions.get('window').height
     return (
-        <ScrollView style={{ height: "auto", maxHeight: screenHeight, }}>
-            {
-                firstYearData.length == 0 ? (
-                    <View style={styles.noDataContainer}>
-                        <Text>Nema aktivnih oglasa.</Text>
-                    </View>
-                ) : (
-                        <View style={{ paddingVertical: 20 }}>
-                            <MainPageGodina key={1} godina={"Prva godina"} data={firstYearData} navigation={props.navigation} />
-                        </View>
-                    )
-            }
+        <ScrollView style={{ height: "auto", maxHeight: screenHeight }}>
+            <MainPageGodina key={1} godina={"Prva godina"} data={firstYearData} navigation={props.navigation} />
         </ScrollView>
     )
 }
-
-const styles = StyleSheet.create({
-    noDataContainer: {
-        paddingTop: 60,
-        alignItems: 'center',
-        justifyContent: 'center',
-    }
-});

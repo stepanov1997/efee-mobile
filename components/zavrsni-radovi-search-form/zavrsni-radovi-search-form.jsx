@@ -27,14 +27,13 @@ export const ZavrsniRadoviSearchForm = ({ searchOnPress, setModalVisible }) => {
         }>
         <Picker.Item label="Naslov rada" value="tema" />
         <Picker.Item label="Opis rada" value="obrazlozenje" />
-        <Picker.Item label="Status rada" value="trenutniStatus.statusZavrsnogRada.naziv" />
         <Picker.Item label="Mentor" value="mentor.ime" />
         <Picker.Item label="Predsjednik komisije" value="predsjednikKomisije.ime" />
         <Picker.Item label="Član komisije" value="clanKomisije.ime" />
         <Picker.Item label="Student" value="studentIme" />
       </Picker>
       <TouchableOpacity style={styles.searchButton} onPress={() => searchOnPress(searchTerm, searchField)} >
-        <Text style={{color: 'white', fontWeight: 'bold', fontSize: 16, }}>Pretraži</Text>
+        <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 16, }}>Pretraži</Text>
       </TouchableOpacity>
     </View>
   );

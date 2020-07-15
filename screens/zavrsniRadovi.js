@@ -27,11 +27,40 @@ export default function ZavrsniRadovi(props) {
             }
 
             if (searchTerm != null && searchTerm !== "") {
-                filterQuery['where'] = [{
-                    "operator": searchField === "trenutniStatus.statusZavrsnogRada.naziv" ? "like" : "ilike",
-                    "field": searchField,
-                    "value": searchTerm
-                }];
+                filterQuery['where'] = [
+                    {
+                        "operator": searchField === "trenutniStatus.statusZavrsnogRada.naziv" ? "like" : "ilike",
+                        "field": searchField,
+                        "value": searchTerm
+                    }
+                ];
+            }
+
+            switch (props.type) {
+                case 'slobodni':
+                    filterQuery['where'].push({
+                        operator: "equal",
+                        field: "trenutniStatus.statusZavrsnogRada.id",
+                        value: 2
+                    })
+                    break;
+                case 'zauzeti':
+                    filterQuery['where'].push({
+                        operator: "equal",
+                        field: "trenutniStatus.statusZavrsnogRada.id",
+                        value: 3
+                    })
+                    break;
+                case 'odbranjeni':
+                    filterQuery['where'].push({
+                        operator: "equal",
+                        field: "trenutniStatus.statusZavrsnogRada.id",
+                        value: 4
+                    })
+                    break;
+
+                default: break;
+
             }
 
             const encoded = encodeURI(encodeURI(JSON.stringify(filterQuery)));
