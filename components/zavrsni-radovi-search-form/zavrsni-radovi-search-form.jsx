@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
-import { View, TextInput, Button, Text, StyleSheet, Picker } from 'react-native';
+import { View, TextInput, Button, Text, StyleSheet, Picker, TouchableOpacity } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
-import { TouchableOpacity } from 'react-native-gesture-handler';
-
 
 export const ZavrsniRadoviSearchForm = ({ searchOnPress, setModalVisible }) => {
   const [searchTerm, setSearchTerm] = useState();
@@ -32,7 +30,7 @@ export const ZavrsniRadoviSearchForm = ({ searchOnPress, setModalVisible }) => {
         <Picker.Item label="Član komisije" value="clanKomisije.ime" />
         <Picker.Item label="Student" value="studentIme" />
       </Picker>
-      <TouchableOpacity style={styles.searchButton} onPress={() => searchOnPress(searchTerm, searchField)} >
+      <TouchableOpacity style={styles.searchButton} onPress={() => searchOnPress(searchTerm, searchField)}>
         <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 16, }}>Pretraži</Text>
       </TouchableOpacity>
     </View>

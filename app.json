@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "EfeeAndroid",
-    "slug": "EfeeAndroid",
+    "name": "efee-mobile",
+    "slug": "efee-mobile",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -17,11 +17,19 @@
       "**/*"
     ],
     "ios": {
+      "icon": "./assets/icon.png",
+      "bundleIdentifier": "efee.mobile",
+      "buildNumber": "1.0.0",
       "supportsTablet": true
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "description": ""
+    "description": "",
+    "android": {
+      "icon": "./assets/icon.png",
+      "package": "efee.mobile",
+      "versionCode": 1
+    }
   }
 }
