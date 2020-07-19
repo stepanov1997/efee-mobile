@@ -4,7 +4,7 @@ import { parseDate } from "../util";
 
 export default function OglasDetail(props) {
     const oglas = props.navigation.getParam('oglas');
-    //console.log("Potpis: ." + oglas.potpis + ".")
+    console.log(oglas)
     return (
         <ScrollView>
             <View style={styles.oglasContainer}>
@@ -30,7 +30,7 @@ export default function OglasDetail(props) {
                         <TouchableOpacity>
                             <View>
                                 <Text style={styles.prilog}
-                                    onPress={() => Linking.openURL(`https://efee.etf.unibl.org:8443/api/public/oglasi/${oglas.oglasPrilozi[0].id}/download`)}>
+                                    onPress={() => Linking.openURL(`https://efee.etf.unibl.org:8443/api/public/oglasi/${oglas.id}/download`)}>
                                     Prilog: {oglas.oglasPrilozi[0].originalniNaziv}
                                 </Text>
                             </View>
